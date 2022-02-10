@@ -11,8 +11,4 @@
     <PackageReference Include="Discord.Net.Interactions" Version="3.3.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Interactions\TypeConverters\" />
-  </ItemGroup>
-
 </Project>

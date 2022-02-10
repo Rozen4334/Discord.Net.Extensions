@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Discord.Interactions;
+﻿using Discord.Interactions;
 
-namespace Discord.Extensions.Interactions.Preconditions
+namespace Discord.Extensions.Interactions
 {
     /// <summary>
     ///     Checks if the user ID of the user interacting with this message component matches that of what was placed in the custom ID.
