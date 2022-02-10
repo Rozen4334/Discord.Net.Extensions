@@ -3,7 +3,17 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
+	<RootNamespace>Discord.Extensions</RootNamespace>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Interactions\Attributes\" />
+    <Folder Include="Interactions\Preconditions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Discord.Net.Interactions" Version="3.3.0" />
+  </ItemGroup>
 
 </Project>

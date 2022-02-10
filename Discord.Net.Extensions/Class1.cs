@@ -1,4 +1,4 @@
-﻿namespace Discord.Net.Extensions
+﻿namespace Discord.Extensions
 {
     public class Class1
     {
