@@ -5,7 +5,7 @@ using Discord.Interactions;
 namespace Discord.Extensions.Interactions
 {
     /// <summary>
-    ///     Extensions for building a generic context.
+    ///     Extensions for building an <see cref="IInteractionContext"/>
     /// </summary>
     public static class InteractionContext
     {

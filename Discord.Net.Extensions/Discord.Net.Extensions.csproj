@@ -8,12 +8,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Interactions\Attributes\" />
-    <Folder Include="Interactions\Preconditions\" />
+    <PackageReference Include="Discord.Net.Interactions" Version="3.3.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Discord.Net.Interactions" Version="3.3.0" />
+    <Folder Include="Interactions\TypeConverters\" />
   </ItemGroup>
 
 </Project>
