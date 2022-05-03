@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace Discord.Extensions.Interactions
 {
-    internal class UlongTypeConverter : TypeConverter<ulong>
+    /// <summary>
+    ///     A <see cref="TypeConverter{T}"/> to convert slash command options to <see langword="ulong"/>.
+    /// </summary>
+    public class UlongTypeConverter : TypeConverter<ulong>
     {
         public override ApplicationCommandOptionType GetDiscordType()
             => ApplicationCommandOptionType.String;

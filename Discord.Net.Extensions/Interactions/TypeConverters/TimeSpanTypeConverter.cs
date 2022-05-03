@@ -5,7 +5,7 @@ using System.Text.RegularExpressions;
 namespace Discord.Extensions.Interactions
 {
     /// <summary>
-    ///     A generic <see cref="TypeConverter{T}"/> that converts from string to timespan.
+    ///     A generic <see cref="TypeConverter{T}"/> that converts slash command options to <see cref="TimeSpan"/>.
     /// </summary>
     public class TimeSpanTypeConverter : TypeConverter<TimeSpan>
     {
