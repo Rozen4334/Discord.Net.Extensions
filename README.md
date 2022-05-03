@@ -8,16 +8,16 @@ It attempts to make work for the developer easier, by introducing extensions tha
 The naming of this package follows that of Discord.Net:
 
 ```cs
-using Discord
-using Discord.Extensions
+using Discord;
+using Discord.Extensions;
 ```
 
 Because the package is seperate, and not a part of the library itself, it levels down a single name on the namespace. 
 It does still follow the naming of Discord.Net itself however:
 
 ```cs
-using Discord.Interactions
-using Discord.Extensions.Interactions
+using Discord.Interactions;
+using Discord.Extensions.Interactions;
 ```
 
 Depending on the namespace of the type you're looking to target, its extensions will be in the matching `Extensions` namespace.
