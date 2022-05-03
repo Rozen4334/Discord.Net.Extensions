@@ -1,9 +1,4 @@
 ﻿using Discord.Interactions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Discord.Extensions.Interactions
 {
@@ -18,7 +13,7 @@ namespace Discord.Extensions.Interactions
                 return Task.FromResult(TypeConverterResult.FromSuccess(id));
             else
                 return Task.FromResult(TypeConverterResult.FromError(
-                    InteractionCommandError.ConvertFailed, 
+                    InteractionCommandError.ConvertFailed,
                     "Unable to parse wildcard as Guid"));
         }
     }

@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Immutable;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Discord.Extensions.Utils
 {

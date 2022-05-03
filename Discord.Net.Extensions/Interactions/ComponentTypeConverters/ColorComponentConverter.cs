@@ -1,10 +1,4 @@
 ﻿using Discord.Interactions;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Discord.Extensions.Interactions
 {
@@ -14,6 +8,6 @@ namespace Discord.Extensions.Interactions
     public class ColorComponentConverter : ComponentTypeConverter<Color>
     {
         public override Task<TypeConverterResult> ReadAsync(IInteractionContext context, IComponentInteractionData option, IServiceProvider services)
-            => Task.FromResult(Utils.ConverterExtensions.ConvertColor(option.Value));   
+            => Task.FromResult(Utils.ConverterExtensions.ConvertColor(option.Value));
     }
 }

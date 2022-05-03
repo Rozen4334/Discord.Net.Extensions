@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Discord.Extensions.Builders
+﻿namespace Discord.Extensions.Builders
 {
     /// <summary>
     ///     An extension class that adds an easier way to create components for a <see cref="ComponentBuilder"/>

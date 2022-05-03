@@ -1,6 +1,6 @@
-﻿using Discord.Rest;
+﻿using Discord.Interactions;
+using Discord.Rest;
 using Discord.WebSocket;
-using Discord.Interactions;
 
 namespace Discord.Extensions.Interactions
 {

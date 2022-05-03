@@ -1,9 +1,4 @@
 ﻿using Discord.Interactions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Discord.Extensions.Interactions
 {
@@ -23,7 +18,7 @@ namespace Discord.Extensions.Interactions
                 return Task.FromResult(TypeConverterResult.FromSuccess(value));
             else
                 return Task.FromResult(TypeConverterResult.FromError(
-                    error: InteractionCommandError.ConvertFailed, 
+                    error: InteractionCommandError.ConvertFailed,
                     reason: "Unable to parse input string as ulong."));
         }
     }

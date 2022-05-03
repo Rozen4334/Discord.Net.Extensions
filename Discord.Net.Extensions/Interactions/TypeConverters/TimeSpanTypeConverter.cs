@@ -1,6 +1,5 @@
 ﻿using Discord.Extensions.Utils;
 using Discord.Interactions;
-using System.Text.RegularExpressions;
 
 namespace Discord.Extensions.Interactions
 {
