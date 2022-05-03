@@ -11,10 +11,7 @@ namespace Discord.Extensions.Interactions.Attributes
     ///     Disables the components on the message this interaction sources from.
     /// </summary>
     /// <remarks>
-    ///     This attribute will fail if the source message was ephemeral. 
-    ///     This is up to the developer to handle. 
-    ///     
-    ///     This attribute will fail if it is used on methods that do not implement <see cref="ComponentInteractionAttribute"/>
+    ///     This attribute will fail if the source message was ephemeral or if it is used on methods that do not implement <see cref="ComponentInteractionAttribute"/>
     /// </remarks>
     [AttributeUsage(AttributeTargets.Method)]
     public class DisableSourceAttribute : PreconditionAttribute

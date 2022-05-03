@@ -3,9 +3,9 @@
 namespace Discord.Extensions.Interactions
 {
     /// <summary>
-    ///     A generic <see cref="TypeConverter{T}"/> that converts from string to emote.
+    ///     A <see cref="TypeConverter{T}"/> that converts from string to emote.
     /// </summary>
-    public class EmoteConverter : TypeConverter<IEmote>
+    public class EmoteTypeConverter : TypeConverter<IEmote>
     {
         public override ApplicationCommandOptionType GetDiscordType()
             => ApplicationCommandOptionType.String;

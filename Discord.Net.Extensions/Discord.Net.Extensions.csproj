@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Discord.Net.Interactions" Version="3.3.0" />
+    <PackageReference Include="Discord.Net.Interactions" Version="3.6.1" />
   </ItemGroup>
 
 </Project>
