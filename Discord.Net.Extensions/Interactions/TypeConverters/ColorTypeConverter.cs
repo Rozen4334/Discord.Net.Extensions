@@ -20,12 +20,7 @@ namespace Discord.Extensions.Interactions
         {
             var @string = (string)option.Value;
 
-            if (uint.TryParse(@string.Replace("#", " ").Trim(), NumberStyles.HexNumber, null, out uint result))
-                return Task.FromResult(TypeConverterResult.FromSuccess(new Color(result)));
-            else
-                return Task.FromResult(TypeConverterResult.FromError(
-                    error: InteractionCommandError.ConvertFailed,
-                    reason: "Unable to convert input string to Color."));
+            return Task.FromResult(Utils.ConverterExtensions.ConvertColor(@string));
         }
     }
 }

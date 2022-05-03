@@ -13,8 +13,6 @@ namespace Discord.Extensions.Interactions
     public class EmoteComponentConverter : ComponentTypeConverter<IEmote>
     {
         public override Task<TypeConverterResult> ReadAsync(IInteractionContext context, IComponentInteractionData option, IServiceProvider services)
-        {
-            throw new NotImplementedException();
-        }
+            => Task.FromResult(Utils.ConverterExtensions.ConvertEmote(option.Value));
     }
 }

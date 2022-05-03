@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Discord.Extensions.Interactions
+namespace Discord.Extensions.Interactions.TypeReaders
 {
     /// <summary>
-    ///     A <see cref="TypeReader{T}"/> to convert component wildcards into <see cref="IEmote"/>.
+    ///     A <see cref="TypeReader{T}"/> to convert component wildcards into <see cref="Color"/>.
     /// </summary>
-    public class EmoteTypeReader : TypeReader<IEmote>
+    public class ColorTypeReader : TypeReader<Color>
     {
         public override Task<TypeConverterResult> ReadAsync(IInteractionContext context, string option, IServiceProvider services)
-            => Task.FromResult(Utils.ConverterExtensions.ConvertEmote(option));
+            => Task.FromResult(Utils.ConverterExtensions.ConvertColor(option));
     }
 }
