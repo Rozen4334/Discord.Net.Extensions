@@ -22,18 +22,14 @@ namespace Discord.Extensions.Interactions
             if (context.Interaction is not IComponentInteraction component)
                 return Task.FromResult(PreconditionResult.FromError("Context unrecognized as component context."));
 
-            else
-            {
-                var param = component.Data.CustomId.Split(_wildcardAnnouncer);
+            var param = component.Data.CustomId.Split(_wildcardAnnouncer);
 
-                if (param.Length > 1 && ulong.TryParse(param[1].Split(_wildcardSplitter)[_index], out ulong id))
-                    return (context.User.Id == id)
-                        ? Task.FromResult(PreconditionResult.FromSuccess())
-                        : Task.FromResult(PreconditionResult.FromError("User ID does not match component ID!"));
+            if (param.Length > 1 && ulong.TryParse(param[1].Split(_wildcardSplitter)[_index], out ulong id))
+                return (context.User.Id == id)
+                    ? Task.FromResult(PreconditionResult.FromSuccess())
+                    : Task.FromResult(PreconditionResult.FromError("User ID does not match component ID!"));
 
-                else
-                    return Task.FromResult(PreconditionResult.FromError("Parse cannot be done if no userID exists."));
-            }
+            return Task.FromResult(PreconditionResult.FromError("Parse cannot be done if no userID exists."));
         }
 
         /// <summary>
