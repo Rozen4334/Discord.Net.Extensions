@@ -1,64 +1,64 @@
 namespace Discord.Extensions.Utils
 {
     /// <summary>
-    ///     Provides a number of extensions for formatting discord text.
+    ///     Provides a number of extensions for formatting Discord text.
     /// </summary>
     public static class DiscordFormatExtensions
     {
         /// <summary>
-        /// Format <see cref="text"/> to bold.
+        /// Formats <paramref name="text"/> to bold markdown.
         /// </summary>
-        /// <param name="text">Text which will be formatted.</param>
-        /// <returns>The same <see cref="text"/> with bold formatting.</returns>
-        public static string FormatToBold(this string text) => $"**{text}**";
+        /// <param name="text">The string to be formatted to bold markdown.</param>
+        /// <returns>The same <paramref name="text"/> with bold formatting.</returns>
+        public static string ToBold(this string text) => $"**{text}**";
         
         /// <summary>
-        /// Format <see cref="text"/> to italics.
+        /// Formats <paramref name="text"/> to italics markdown.
         /// </summary>
-        /// <param name="text">Text which will be formatted.</param>
-        /// <returns>The same <see cref="text"/> with italics formatting.</returns>
-        public static string FormatToItalics(this string text) => $"*{text}*";
+        /// <param name="text">The string to be formatted to italics markdown.</param>
+        /// <returns>The same <paramref name="text"/> with italics formatting.</returns>
+        public static string ToItalics(this string text) => $"*{text}*";
         
         /// <summary>
-        /// Format <see cref="text"/> to underline.
+        /// Formats <paramref name="text"/> to underline markdown.
         /// </summary>
-        /// <param name="text">Text which will be formatted.</param>
-        /// <returns>The same <see cref="text"/> with underline formatting.</returns>
-        public static string FormatToUnderline(this string text) => $"__{text}__";
+        /// <param name="text">The string to be formatted to underline markdown.</param>
+        /// <returns>The same <paramref name="text"/> with underline formatting.</returns>
+        public static string ToUnderline(this string text) => $"__{text}__";
         
         /// <summary>
-        /// Format <see cref="text"/> to strikethrough.
+        /// Formats <paramref name="text"/> to strikethrough markdown.
         /// </summary>
-        /// <param name="text">Text which will be formatted.</param>
-        /// <returns>The same <see cref="text"/> with strikethrough formatting.</returns>
-        public static string FormatToStrikethrough(this string text) => $"~~{text}~~";
+        /// <param name="text">The string to be formatted to strikethrough markdown.</param>
+        /// <returns>The same <paramref name="text"/> with strikethrough formatting.</returns>
+        public static string ToStrikethrough(this string text) => $"~~{text}~~";
         
         /// <summary>
-        /// Format <see cref="text"/> to spoiler.
+        /// Formats <paramref name="text"/> to spoiler markdown.
         /// </summary>
-        /// <param name="text">Text which will be formatted.</param>
-        /// <returns>The same <see cref="text"/> with spoiler formatting.</returns>
-        public static string FormatToSpoiler(this string text) => $"||{text}||";
+        /// <param name="text">The string to be formatted to spoiler markdown.</param>
+        /// <returns>The same <paramref name="text"/> with spoiler formatting.</returns>
+        public static string ToSpoiler(this string text) => $"||{text}||";
         
         /// <summary>
-        /// Format <see cref="text"/> to quote.
+        /// Formats <paramref name="text"/> to quote markdown.
         /// </summary>
-        /// <param name="text">Text which will be formatted.</param>
-        /// <returns>The same <see cref="text"/> with quote formatting.</returns>
-        public static string FormatToQuote(this string text) => $"> {text}";
+        /// <param name="text">The string to be formatted to quote markdown.</param>
+        /// <returns>The same <paramref name="text"/> with quote formatting.</returns>
+        public static string ToQuote(this string text) => $"> {text}";
         
         /// <summary>
-        /// Format <see cref="text"/> to block quote.
+        /// Formats <paramref name="text"/> to block quote markdown.
         /// </summary>
-        /// <param name="text">Text which will be formatted.</param>
-        /// <returns>The same <see cref="text"/> with block quote formatting.</returns>
-        public static string FormatToBlockQuote(this string text) => $">>> {text}";
+        /// <param name="text">The string to be formatted to block quote markdown.</param>
+        /// <returns>The same <paramref name="text"/> with block quote formatting.</returns>
+        public static string ToBlockQuote(this string text) => $">>> {text}";
 
         /// <summary>
-        /// Format <see cref="text"/> to code block.
+        /// Formats <paramref name="text"/> to code block markdown.
         /// </summary>
-        /// <param name="text">Text which will be formatted.</param>
-        /// <returns>The same <see cref="text"/> with code block formatting.</returns>
-        public static string FormatToCodeBlock(this string text) => $"`{text}`";
+        /// <param name="text">The string to be formatted to code block markdown.</param>
+        /// <returns>The same <paramref name="text"/> with code block formatting.</returns>
+        public static string ToCodeBlock(this string text) => $"`{text}`";
     }
 }
