@@ -45,6 +45,14 @@ Below a number of features is covered, including notices of logic, examples or e
 
 Inside the `DiscordFormattingExtensions` class a large amount of formatting extensions exists, allowing developers to customize messages with ease.
 
+### Factories
+
+- `EmbedBuilderFactory`
+- `ComponentBuilderFactory`
+- `ModalBuilderFactory`
+
+> These factories generate actions based on the actions defined in `BuilderSettings`. View the [Samples](https://github.com/Rozen4334/Discord.Net.Extensions/tree/master/Samples/FactoryExample) for how to use it.
+
 ## 💤 Rest
 
 In progress...
@@ -62,6 +70,10 @@ In progress...
 In progress...
 
 ## ⭕ Interactions
+
+### IModal to ModalBuilder support
+
+Thanks to the design of modals in Discord.Net, a few extensions have been added to turn `IModal`'s into `ModalBuilder`'s with populated values.
 
 ### Generic Context Generation
 
