@@ -16,10 +16,10 @@ namespace Discord.Extensions.Interactions
 
             if (ulong.TryParse(@string, out ulong value))
                 return Task.FromResult(TypeConverterResult.FromSuccess(value));
-            else
-                return Task.FromResult(TypeConverterResult.FromError(
-                    error: InteractionCommandError.ConvertFailed,
-                    reason: "Unable to parse input string as ulong."));
+            
+            return Task.FromResult(TypeConverterResult.FromError(
+                error: InteractionCommandError.ConvertFailed,
+                reason: "Unable to parse input string as ulong."));
         }
     }
 }
