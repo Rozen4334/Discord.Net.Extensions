@@ -1,23 +1,18 @@
 ﻿using Discord;
 using Discord.Extensions;
 using Discord.WebSocket;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FactoryExample
 {
     internal class ReusableEmbedSender
     {
-        private readonly EmbedBuilderFactory _factory;
+        private readonly EmbedBuilderFactory<ExampleType> _factory;
         private readonly DiscordSocketClient _client;
         private readonly System.Timers.Timer _timer;
 
         private ITextChannel _channel = null!;
 
-        public ReusableEmbedSender(EmbedBuilderFactory factory, DiscordSocketClient client)
+        public ReusableEmbedSender(EmbedBuilderFactory<ExampleType> factory, DiscordSocketClient client)
         {
             _factory = factory;
             _timer = new()
@@ -42,7 +37,7 @@ namespace FactoryExample
 
         private async void OnElapse(object? sender, System.Timers.ElapsedEventArgs e)
         {
-            var eb = _factory.Generate();
+            var eb = _factory.Generate(ExampleType.Default);
 
             eb.WithDescription("Test");
 

@@ -27,63 +27,64 @@ SOFTWARE.
 namespace Discord.Extensions
 {
     /// <summary>
-    ///     Represents a factory that builds <see cref="EmbedBuilder"/>'s from provided <see cref="BuilderSettings{T}"/>.
+    ///     Represents a factory to generate modal builders with.
     /// </summary>
-    public class EmbedBuilderFactory<TKey> : IBuilderFactory<TKey, EmbedBuilder> where TKey : notnull
+    /// <typeparam name="TKey">The type that serves as key in the passed <see cref="BuilderSettings{T, TBuilder}"/>.</typeparam>
+    public class ModalBuilderFactory<TKey> : IBuilderFactory<TKey, ModalBuilder> where TKey : notnull
     {
-        private readonly BuilderSettings<TKey, EmbedBuilder> _generator;
+        private readonly BuilderSettings<TKey, ModalBuilder> _generator;
 
         /// <summary>
-        ///     Creates a new <see cref="EmbedBuilderFactory{TKey}"/> based on the provided <paramref name="generator"/>.
+        ///     Creates a new <see cref="ModalBuilderFactory{TKey}"/> based on the provided <paramref name="generator"/>.
         /// </summary>
         /// <param name="generator">The generator with unique actions reserved by the key.</param>
         /// <exception cref="ArgumentNullException">Thrown if <paramref name="generator"/> is null.</exception>
-        public EmbedBuilderFactory(BuilderSettings<TKey, EmbedBuilder> generator)
+        public ModalBuilderFactory(BuilderSettings<TKey, ModalBuilder> generator)
         {
-            if (_generator is null)
+            if (generator is null)
                 throw new ArgumentNullException(nameof(generator));
             _generator = generator;
         }
 
         /// <inheritdoc/>
-        public virtual EmbedBuilder Generate(TKey key, Action<EmbedBuilder>? action = null)
+        public virtual ModalBuilder Generate(TKey key, Action<ModalBuilder>? action = null)
             => Generate(key, _generator, action);
 
         /// <inheritdoc/>
-        public virtual EmbedBuilder GenerateGlobal(Action<EmbedBuilder>? action = null)
+        public virtual ModalBuilder GenerateGlobal(Action<ModalBuilder>? action = null)
         {
-            var eb = new EmbedBuilder();
+            var mb = new ModalBuilder();
 
             if (_generator.GlobalAction is not null)
-                _generator.GlobalAction(eb);
+                _generator.GlobalAction(mb);
 
             if (action is not null)
-                action(eb);
+                action(mb);
 
-            return eb;
+            return mb;
         }
 
         /// <summary>
-        ///     Generates a new <see cref="EmbedBuilder"/> based on the values put in at <paramref name="generator"/>.
+        ///     Generates a new <see cref="ModalBuilder"/> based on the values put in at <paramref name="generator"/>.
         /// </summary>
         /// <param name="key">The key for which to grab the generator.</param>
         /// <param name="generator">The base settings for this builder.</param>
         /// <param name="action">An alternative action the builder should take. Executed after the action in <paramref name="generator"/>.</param>
-        /// <returns>The generated <see cref="EmbedBuilder"/>.</returns>
-        public static EmbedBuilder Generate(TKey key, BuilderSettings<TKey, EmbedBuilder> generator, Action<EmbedBuilder>? action = null)
+        /// <returns>The generated <see cref="ModalBuilder"/>.</returns>
+        public static ModalBuilder Generate(TKey key, BuilderSettings<TKey, ModalBuilder> generator, Action<ModalBuilder>? action = null)
         {
-            var eb = new EmbedBuilder();
+            var mb = new ModalBuilder();
 
             if (generator.GlobalAction is not null)
-                generator.GlobalAction(eb);
+                generator.GlobalAction(mb);
 
             if (generator.TryGetAction(key, out var genAction))
-                genAction?.Invoke(eb);
+                genAction?.Invoke(mb);
 
             if (action is not null)
-                action(eb);
+                action(mb);
 
-            return eb;
+            return mb;
         }
     }
 }
