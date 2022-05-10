@@ -61,7 +61,7 @@ namespace Discord.Extensions.Interactions
         /// <param name="client">The <see cref="DiscordSocketClient"/> that should be passed into the context of this interaction.</param>
         /// <returns>A <see cref="SocketInteractionContext{TInteraction}"/> where TInteraction is the type of <paramref name="interaction"/>.</returns>
         /// <exception cref="InvalidOperationException"></exception>
-        public static IInteractionContext GenerateGeneric(this SocketInteraction interaction, DiscordSocketClient client)
+        public static IInteractionContext CreateGenericContext(this SocketInteraction interaction, DiscordSocketClient client)
             => interaction switch
             {
                 SocketModal modal => new SocketInteractionContext<SocketModal>(client, modal),
@@ -79,7 +79,7 @@ namespace Discord.Extensions.Interactions
         /// <param name="client">The <see cref="DiscordShardedClient"/> that should be passed into the context of this interaction.</param>
         /// <returns>A <see cref="ShardedInteractionContext{TInteraction}"/> where TInteraction is the type of <paramref name="interaction"/>.</returns>
         /// <exception cref="InvalidOperationException"></exception>
-        public static IInteractionContext GenerateGeneric(this SocketInteraction interaction, DiscordShardedClient client)
+        public static IInteractionContext CreateGenericContext(this SocketInteraction interaction, DiscordShardedClient client)
             => interaction switch
             {
                 SocketModal modal => new ShardedInteractionContext<SocketModal>(client, modal),
