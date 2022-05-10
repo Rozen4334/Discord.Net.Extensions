@@ -2,6 +2,7 @@
 using Discord.Interactions;
 using Discord.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
+using Discord.Extensions.Interactions;
 
 var discordSettings = new DiscordSocketConfig()
 {
@@ -35,9 +36,9 @@ discordClient.Ready += async () =>
     await interactionService.RegisterCommandsGloballyAsync(true);
 };
 
-discordClient.InteractionCreated += async (i) =>
+discordClient.InteractionCreated += async (interaction) =>
 {
-    var ctx = Discord.Extensions.Interactions.InteractionContext.GenerateGeneric(i, discordClient);
+    var ctx = interaction.GenerateGeneric(discordClient);
 
     await interactionService.ExecuteCommandAsync(ctx, services);
 };

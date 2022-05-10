@@ -43,7 +43,7 @@ namespace Discord.Extensions.Interactions
         /// <param name="callback">The initial REST response callback.</param>
         /// <returns>A <see cref="RestInteractionContext{TInteraction}"/> where TInteraction is the type of <paramref name="interaction"/>.</returns>
         /// <exception cref="InvalidOperationException"></exception>
-        public static IInteractionContext GenerateGeneric(RestInteraction interaction, DiscordRestClient client, Func<string, Task> callback)
+        public static IInteractionContext GenerateGeneric(this RestInteraction interaction, DiscordRestClient client, Func<string, Task> callback)
             => interaction switch
             {
                 RestModal modal => new RestInteractionContext<RestModal>(client, modal, callback),
@@ -61,7 +61,7 @@ namespace Discord.Extensions.Interactions
         /// <param name="client">The <see cref="DiscordSocketClient"/> that should be passed into the context of this interaction.</param>
         /// <returns>A <see cref="SocketInteractionContext{TInteraction}"/> where TInteraction is the type of <paramref name="interaction"/>.</returns>
         /// <exception cref="InvalidOperationException"></exception>
-        public static IInteractionContext GenerateGeneric(SocketInteraction interaction, DiscordSocketClient client)
+        public static IInteractionContext GenerateGeneric(this SocketInteraction interaction, DiscordSocketClient client)
             => interaction switch
             {
                 SocketModal modal => new SocketInteractionContext<SocketModal>(client, modal),
@@ -79,7 +79,7 @@ namespace Discord.Extensions.Interactions
         /// <param name="client">The <see cref="DiscordShardedClient"/> that should be passed into the context of this interaction.</param>
         /// <returns>A <see cref="ShardedInteractionContext{TInteraction}"/> where TInteraction is the type of <paramref name="interaction"/>.</returns>
         /// <exception cref="InvalidOperationException"></exception>
-        public static IInteractionContext GenerateGeneric(SocketInteraction interaction, DiscordShardedClient client)
+        public static IInteractionContext GenerateGeneric(this SocketInteraction interaction, DiscordShardedClient client)
             => interaction switch
             {
                 SocketModal modal => new ShardedInteractionContext<SocketModal>(client, modal),
