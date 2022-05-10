@@ -1,9 +1,22 @@
 # ➕ Discord.Net.Extensions
 
-This package introduces a number of features that assist Discord.Net as a library. 
+This package introduces a number of features that assist [Discord.Net](https://github.com/discord-net/Discord.Net) as a library. 
 It attempts to make work for the developer easier, by introducing extensions that perfectly support development needs.
 
-## ℹ️ Practices
+## ℹ️ How to install
+
+### Grabbing the package from NuGet:
+
+The Discord.Net.Extensions package is available on [Nuget](https://www.nuget.org/packages/Discord.Net.Extensions/) or through the package manager:
+- `PM> Install-Package Discord.Net.Extensions -Version 1.1.0`
+
+### Installing from Visual Studio:
+
+Just like Discord.Net, Discord.Net.Extensions is available from the NuGet package manager built into VS:
+
+![Go to the Manager](https://rozen.one/files/devenv_JcPwXUnJxP.png)
+
+### Applying namespaces:
 
 The naming of this package follows that of Discord.Net:
 
