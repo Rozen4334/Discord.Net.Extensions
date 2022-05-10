@@ -26,10 +26,17 @@ namespace Discord.Extensions.Utils
             if (uint.TryParse(input.Replace("#", " ").Trim(), NumberStyles.HexNumber, null, out uint result))
                 return TypeConverterResult.FromSuccess(new Color(result));
 
-            else
+            try
+            {
+                var @uint = Convert.ToUInt32(input, 16); // Parse any other uint value i.e. 0x******
+                return TypeConverterResult.FromSuccess(@uint);
+            }
+            catch
+            {
                 return TypeConverterResult.FromError(
                     error: InteractionCommandError.ConvertFailed,
                     reason: "Unable to convert input string to Color.");
+            }
         }
     }
 }
