@@ -45,6 +45,14 @@ Below a number of features is covered, including notices of logic, examples or e
 
 Inside the `DiscordFormattingExtensions` class a large amount of formatting extensions exists, allowing developers to customize messages with ease.
 
+### Builder Factories
+
+- `EmbedBuilderFactory`
+- `ComponentBuilderFactory`
+- `ModalBuilderFactory`
+
+> These factories generate builders based on the actions defined in `BuilderSettings`. View the [Samples](https://github.com/Rozen4334/Discord.Net.Extensions/tree/master/Samples) for how to use it.
+
 ## 💤 Rest
 
 In progress...
@@ -63,10 +71,16 @@ In progress...
 
 ## ⭕ Interactions
 
+### IModal to ModalBuilder support
+
+Thanks to the design of modals in Discord.Net, a few extensions have been added to turn `IModal`'s into `ModalBuilder`'s with populated values.
+
 ### Generic Context Generation
 
 For each type of `Interaction` a method has been introduced to automatically generate generic `IInteractionContext`, 
-supporting the use-case of `XInteractionContext<XInteraction>`
+supporting the use-case of `XInteractionContext<XInteraction>`.
+
+> View the [Samples](https://github.com/Rozen4334/Discord.Net.Extensions/tree/master/Samples) to learn how to use these methods.
 
 ### Type converters for commands, modals & components.
 
@@ -95,40 +109,3 @@ supporting the use-case of `XInteractionContext<XInteraction>`
 
 > \*\*\* The `UInt64` (ulong) converter is introduced because the `Int64` (number) 
 > parameter from discord does not support unsigned positive characters up to the height of Discord snowflake ID's.
-
-# 🧑‍💻 Code & Contribution
-
-If you want to contribute to Discord.Net.Extensions, it is suggested you read the below information first, so you understand the method in which the extension functions.
-
-## 🌿 Branches
-
-- `master`
-  - Main branch, no direct pushes will be made here unless they do not affect the extension itself.
-- `feature/x`
-  - Introduces new features to the library.
-- `fix/x`
-  - Fixes part of the library.
-- `doc/x`
-  - Adds or modifies documentation.
-
-> For one-time pulls such as adding licensing, no specific branch format exists.
-
-## 🚄 Contributing
-
-- Fork the repository
-- Create a new branch, preferably one that matches the feature/fix you're implementing
-- Commit to the branch, adding or removing whichever is being added.
-- Open a PR to the master branch of this repo.
-  - Await review, merge potential uproot commits.
-
-> Contributing to Discord.Net.Extensions means you are part of the CR stated in the MIT licensing of this project.
-
-## 🔢 Versioning
-
-Discord.Net.Extensions aims to project Discord.Net versioning. This mean semantic versioning is expected:
-
-- We will only increment `MAJOR` versioning if a breaking change is made in Discord or in this extension. 
-
-- We will only increment `MINOR` versioning if a new feature is introduced or a number of patches are ready to be released.
-
-- We will only increment `PATCH` if a patch must immediately be pushed as it breaks the flow of the extension.

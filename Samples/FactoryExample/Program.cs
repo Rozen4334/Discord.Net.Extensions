@@ -21,5 +21,25 @@ using var services = new ServiceCollection()
     .AddSingleton<ReusableEmbedSender>()
     .BuildServiceProvider();
 
-await services.GetRequiredService<ReusableEmbedSender>()
-    .StartAsync(1ul); // fill in a channel ID here.
+var client = services.GetRequiredService<DiscordSocketClient>();
+
+await client.LoginAsync(TokenType.Bot, ""); // token here.
+
+client.Ready += ReadyAsync;
+client.Log += LogAsync;
+
+Task LogAsync(LogMessage arg)
+{
+    Console.WriteLine(arg);
+    return Task.CompletedTask;
+}
+
+async Task ReadyAsync()
+{
+    await services.GetRequiredService<ReusableEmbedSender>()
+        .StartAsync(1ul); // fill in a channel ID here.
+
+    Console.WriteLine("Ready!");
+}
+
+await client.StartAsync();
