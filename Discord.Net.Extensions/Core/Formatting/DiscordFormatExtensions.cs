@@ -154,6 +154,17 @@ namespace Discord.Extensions
             return text.Format($"\n{format.Format} {text[index..(index + length)]} \n", index, length);
         }
 
+        /// <summary>
+        ///     Adds a timestamp to the current string.
+        /// </summary>
+        /// <param name="text">The text into which the timestamp will be inserted.</param>
+        /// <param name="dateTime">The time to state in the timestamp.</param>
+        /// <param name="style">The style to use.</param>
+        /// <param name="index">The index on which the</param>
+        /// <returns>The same <paramref name="text"/> with a <see cref="TimestampTag"/> implemented at <paramref name="index"/>.</returns>
+        public static string WithTimestamp(this string text, DateTime dateTime, TimestampTagStyles style, int index = 0)
+            => text.Insert(index, TimestampTag.FromDateTime(dateTime, style).ToString());
+
         private static string Format(this string text, string format, int index, int length)
         {
             return text.Insert(index, format).Remove(index + format.Length, length);

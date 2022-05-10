@@ -1,6 +1,6 @@
 ﻿using Discord.Interactions;
 
-namespace Discord.Extensions.Interactions.TypeReaders
+namespace Discord.Extensions.Interactions
 {
     /// <summary>
     ///     A <see cref="TypeReader{T}"/> to convert component wildcards into <see cref="Color"/>.

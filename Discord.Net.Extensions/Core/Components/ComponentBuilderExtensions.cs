@@ -1,4 +1,4 @@
-﻿namespace Discord.Extensions.Builders
+﻿namespace Discord.Extensions
 {
     /// <summary>
     ///     An extension class that adds an easier way to create components for a <see cref="ComponentBuilder"/>

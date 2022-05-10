@@ -1,6 +1,6 @@
 ﻿using Discord.Interactions;
 
-namespace Discord.Extensions.Interactions.Attributes
+namespace Discord.Extensions.Interactions
 {
     /// <summary>
     ///     Disables the components on the message this interaction sources from.

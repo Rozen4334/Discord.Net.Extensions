@@ -1,3 +1,0 @@
-﻿namespace Discord.Extensions.Builders
-{
-}
