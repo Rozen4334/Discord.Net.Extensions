@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Discord.Extensions
 {
+    /// <summary>
+    ///     Represents a language in which codeblocks can be formatted.
+    /// </summary>
     public struct CodeLanguage
     {
         /// <summary>
@@ -21,32 +24,32 @@ namespace Discord.Extensions
         /// <summary>
         ///     Gets the CSharp language format.
         /// </summary>
-        public static CodeLanguage CSharp = new("cs", "csharp");
+        public static readonly CodeLanguage CSharp = new("cs", "csharp");
 
         /// <summary>
         ///     Gets the Javascript language format.
         /// </summary>
-        public static CodeLanguage JavaScript = new("js", "javascript");
+        public static readonly CodeLanguage JavaScript = new("js", "javascript");
 
         /// <summary>
         ///     Gets the XML language format.
         /// </summary>
-        public static CodeLanguage XML = new("xml", "xml");
+        public static readonly CodeLanguage XML = new("xml", "xml");
 
         /// <summary>
         ///     Gets the HTML language format.
         /// </summary>
-        public static CodeLanguage HTML = new("html", "html");
+        public static readonly CodeLanguage HTML = new("html", "html");
 
         /// <summary>
         ///     Gets the CSS markdown format.
         /// </summary>
-        public static CodeLanguage CSS = new("css", "css");
+        public static readonly CodeLanguage CSS = new("css", "css");
 
         /// <summary>
         ///     Gets a language format that represents none.
         /// </summary>
-        public static CodeLanguage None = new("", "none");
+        public static readonly CodeLanguage None = new("", "none");
 
         /// <summary>
         ///     Creates a new language format with name & tag.
