@@ -24,9 +24,11 @@ using var services = new ServiceCollection()
 
 var interactionService = services.GetRequiredService<InteractionService>();
 
-interactionService.AddModulesAsync(typeof(Program).Assembly, services);
+await interactionService.AddModulesAsync(typeof(Program).Assembly, services);
 
 var discordClient = services.GetRequiredService<DiscordSocketClient>();
+
+await discordClient.LoginAsync(TokenType.Bot, ""); // token here.
 
 discordClient.Ready += async () =>
 {
@@ -48,3 +50,5 @@ Task LogAsync(LogMessage arg)
     Console.WriteLine(arg);
     return Task.CompletedTask;
 }
+
+await discordClient.StartAsync();
