@@ -1,5 +1,3 @@
-﻿/*
-
 MIT License
 
 Copyright (c) 2022 Armano den Boef and Discord.Net.Extensions contributors.
@@ -21,31 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-*/
-
-using Discord.Interactions;
-
-namespace Discord.Extensions.Interactions
-{
-    /// <summary>
-    ///     A <see cref="TypeConverter{T}"/> to convert slash command options to <see langword="ulong"/>.
-    /// </summary>
-    public class UlongTypeConverter : TypeConverter<ulong>
-    {
-        public override ApplicationCommandOptionType GetDiscordType()
-            => ApplicationCommandOptionType.String;
-
-        public override Task<TypeConverterResult> ReadAsync(IInteractionContext context, IApplicationCommandInteractionDataOption option, IServiceProvider services)
-        {
-            string @string = (option.Value as string)!;
-
-            if (ulong.TryParse(@string, out ulong value))
-                return Task.FromResult(TypeConverterResult.FromSuccess(value));
-
-            return Task.FromResult(TypeConverterResult.FromError(
-                error: InteractionCommandError.ConvertFailed,
-                reason: "Unable to parse input string as ulong."));
-        }
-    }
-}

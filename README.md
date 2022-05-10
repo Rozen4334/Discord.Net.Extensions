@@ -1,7 +1,7 @@
 # Discord.Net.Extensions
 
 This package introduces a number of features that assist Discord.Net as a library. 
-It attempts to make work for the developer easier, by introducing extensions that perfectly support development needs
+It attempts to make work for the developer easier, by introducing extensions that perfectly support development needs.
 
 ## Practices
 
@@ -28,7 +28,7 @@ Depending on the namespace of the type you're looking to target, its extensions 
 
 ### Formatting support
 
-Inside the `DiscordFormattingExtensions` class a large amount of formatting extensions exists, allowing users to customize developers with ease.
+Inside the `DiscordFormattingExtensions` class a large amount of formatting extensions exists, allowing developers to customize messages with ease.
 
 ## Rest
 

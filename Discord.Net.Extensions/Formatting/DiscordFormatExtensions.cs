@@ -54,7 +54,7 @@ namespace Discord.Extensions
 
             return text.Format($"*{text[index..(index + length)]}*", index, length);
         }
-        
+
         /// <summary>
         ///     Formats <paramref name="text"/> to underline markdown.
         /// </summary>
@@ -66,7 +66,7 @@ namespace Discord.Extensions
 
             return text.Format($"__{text[index..(index + length)]}__", index, length);
         }
-        
+
         /// <summary>
         ///     Formats <paramref name="text"/> to strikethrough markdown.
         /// </summary>
@@ -78,7 +78,7 @@ namespace Discord.Extensions
 
             return text.Format($"~~{text[index..(index + length)]}~~", index, length);
         }
-        
+
         /// <summary>
         ///     Formats <paramref name="text"/> to spoiler markdown.
         /// </summary>
@@ -90,7 +90,7 @@ namespace Discord.Extensions
 
             return text.Format($"||{text[index..(index + length)]}||", index, length);
         }
-        
+
         /// <summary>
         ///     Formats <paramref name="text"/> to quote markdown.
         /// </summary>
@@ -102,7 +102,7 @@ namespace Discord.Extensions
 
             return text.Format($"\n {text[index..(index + length)]}\n", index, length);
         }
-        
+
         /// <summary>
         ///     Formats <paramref name="text"/> to block quote markdown.
         /// </summary>

@@ -1,4 +1,4 @@
-﻿/*
+/*
 
 MIT License
 
@@ -24,8 +24,7 @@ SOFTWARE.
 
 */
 
-using Discord;
-
 namespace Discord.Extensions.Builders
+
 {
 }
