@@ -27,22 +27,68 @@ SOFTWARE.
 namespace Discord.Extensions
 {
     /// <summary>
-    ///     Settings for builder generation in <see cref="EmbedBuilderFactory"/> & <see cref="ComponentBuilderFactory"/>.
+    ///     Settings for builder generation in implementations of <see cref="IBuilderFactory{TKey, TBuilder}"/>.
     /// </summary>
-    public class BuilderSettings<T> where T : class
+    public class BuilderSettings<TKey, TBuilder> where TKey : notnull
     {
         /// <summary>
-        ///     The action that should be executed when the builder is being built.
+        ///     A dictionary of actions that should be executed when the builder is being built depending on the <see cref="TKey"/> provided.
         /// </summary>
-        public Action<T> Action { get; }
+        public Dictionary<TKey, Action<TBuilder>> Actions { get; private set; } = new();
 
         /// <summary>
-        ///     Creates a new instance of <see cref="BuilderSettings{T}"/> with provided settings.
+        ///     An action to run for all builders of <typeparamref name="TBuilder"/>.
         /// </summary>
-        /// <param name="action">The action to be executed when a builder is called from <see cref="ComponentBuilderFactory"/> or <see cref="EmbedBuilderFactory"/></param>
-        public BuilderSettings(Action<T> action)
+        public Action<TBuilder> GlobalAction { get; private set; } = null!;
+
+        /// <summary>
+        ///     Adds an action that should be executed for at creation of all builders.
+        /// </summary>
+        /// <param name="action">The action to execute.</param>
+        /// <returns>The current instance with a new <see cref="GlobalAction"/>.</returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="action"/> is null.</exception>
+        public BuilderSettings<TKey, TBuilder> WithGlobalAction(Action<TBuilder> action)
         {
-            Action = action;
+            if (action is null)
+                throw new ArgumentNullException(nameof(action));
+
+            GlobalAction = action;
+
+            return this;
         }
+
+        /// <summary>
+        ///     Adds an action to the current <see cref="BuilderSettings{T, TBuilder}"/>.
+        /// </summary>
+        /// <param name="key">The key to add.</param>
+        /// <param name="action">The value matching the key.</param>
+        /// <returns>The current instance with a new <see cref="KeyValuePair"/> added to <see cref="Actions"/></returns>
+        /// <exception cref="ArgumentNullException">Thrown when <paramref name="action"/> is null.</exception>
+        public BuilderSettings<TKey, TBuilder> AddAction(TKey key, Action<TBuilder> action)
+        {
+            if (action is null)
+                throw new ArgumentNullException(nameof(action));
+
+            Actions.Add(key, action);
+
+            return this;
+        }
+
+        /// <summary>
+        ///     Attempts to get an action matching the provided key.
+        /// </summary>
+        /// <param name="key">The key to find a value for.</param>
+        /// <param name="action">The found value.</param>
+        /// <returns><see langword="true"/> if found. <see langword="false"/> if not.</returns>
+        public bool TryGetAction(TKey key, out Action<TBuilder>? action)
+            => Actions.TryGetValue(key, out action);
+
+        /// <summary>
+        ///     Gets an action or default matching the provided key.
+        /// </summary>
+        /// <param name="key">The key to find a value for.</param>
+        /// <returns>An action or <see langword="null"/> depending on if the value was found.</returns>
+        public Action<TBuilder>? GetActionOrDefault(TKey key)
+            => Actions.GetValueOrDefault(key);
     }
 }
