@@ -22,17 +22,38 @@ using Discord.Extensions.Interactions;
 
 Depending on the namespace of the type you're looking to target, its extensions will be in the matching `Extensions` namespace.
 
-## Features
+# Features
 
-### Interactions
+## Core
 
-#### Generic Context Generation
+### Formatting support
 
-  For each type of `Interaction` a method has been introduced to automatically generate generic `IInteractionContext`, 
-  supporting the use-case of `XInteractionContext<XInteraction>`
+Inside the `DiscordFormattingExtensions` class a large amount of formatting extensions exists, allowing users to customize developers with ease.
 
+## Rest
 
-#### Type converters for commands, modals & components.
+In progress...
+
+## Websocket
+
+In progress...
+
+## Webhook
+
+In progress...
+
+## Commands
+
+In progress...
+
+## Interactions
+
+### Generic Context Generation
+
+For each type of `Interaction` a method has been introduced to automatically generate generic `IInteractionContext`, 
+supporting the use-case of `XInteractionContext<XInteraction>`
+
+### Type converters for commands, modals & components.
 
 - **TypeReaders**
   - `Color`
