@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FactoryExample", "Samples\F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{07849581-EBC6-4C9C-B7D8-70097F8A2C28}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteractionSample", "Samples\InteractionSample\InteractionSample.csproj", "{488F762F-D7ED-4725-94D5-AD42D0505BD4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{87619993-3956-4DD4-A852-264FBDBFF07B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87619993-3956-4DD4-A852-264FBDBFF07B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87619993-3956-4DD4-A852-264FBDBFF07B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{488F762F-D7ED-4725-94D5-AD42D0505BD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{488F762F-D7ED-4725-94D5-AD42D0505BD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{488F762F-D7ED-4725-94D5-AD42D0505BD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{488F762F-D7ED-4725-94D5-AD42D0505BD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{462D040F-04FD-4FAA-A0D2-CE7208C770AC} = {07849581-EBC6-4C9C-B7D8-70097F8A2C28}
 		{87619993-3956-4DD4-A852-264FBDBFF07B} = {2C0630D7-A545-417E-A091-F3C7E70D5B49}
+		{488F762F-D7ED-4725-94D5-AD42D0505BD4} = {2C0630D7-A545-417E-A091-F3C7E70D5B49}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CA537CDC-AF0E-4958-925F-DF71A0DB62EC}
