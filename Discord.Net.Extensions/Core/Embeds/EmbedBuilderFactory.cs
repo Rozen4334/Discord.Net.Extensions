@@ -27,47 +27,47 @@ SOFTWARE.
 namespace Discord.Extensions
 {
     /// <summary>
-    ///     Represents a factory that builds <see cref="EmbedBuilder"/>'s from provided <see cref="EmbedBuilderSettings"/>.
+    ///     Represents a factory that builds <see cref="EmbedBuilder"/>'s from provided <see cref="BuilderSettings{T}"/>.
     /// </summary>
     public class EmbedBuilderFactory
     {
-        private readonly EmbedBuilderSettings _settings;
+        private readonly BuilderSettings<EmbedBuilder> _generator;
 
         /// <summary>
-        ///     Creates a new instance with provided <see cref="EmbedBuilderSettings"/>.
+        ///     Creates a new instance with provided <see cref="BuilderSettings{T}"/>.
         /// </summary>
-        public EmbedBuilderFactory(EmbedBuilderSettings settings)
+        /// <exception cref="ArgumentNullException">Thrown when the passed <paramref name="generator"/> is <see langword="null"/>.</exception>
+        public EmbedBuilderFactory(BuilderSettings<EmbedBuilder> generator)
         {
-            if (_settings is null)
-                throw new ArgumentNullException(nameof(settings));
-            _settings = settings;
+            if (_generator is null)
+                throw new ArgumentNullException(nameof(generator));
+            _generator = generator;
         }
 
         /// <summary>
-        ///     Generates a new <see cref="EmbedBuilder"/> based on the values put in at <see cref="EmbedBuilderSettings"/>.
+        ///     Generates a new <see cref="EmbedBuilder"/> based on the values put in at <see cref="BuilderSettings{T}"/>.
         /// </summary>
-        /// <returns>The generated <see cref="EmbedBuilder"/></returns>
-        public virtual EmbedBuilder Generate()
-            => Generate(_settings);
+        /// <remarks>
+        ///     Can be overridden to modify the flow of how the builder is created.
+        /// </remarks>
+        /// <param name="action">An alternative action the builder should take. Executed after the action in <see cref="BuilderSettings{T}"/>.</param>
+        /// <returns>The generated <see cref="EmbedBuilder"/>.</returns>
+        public virtual EmbedBuilder Generate(Action<EmbedBuilder>? action = null)
+            => Generate(_generator, action);
 
         /// <summary>
-        ///     Generates a new <see cref="EmbedBuilder"/> based on the values put in at <paramref name="settings"/>.
+        ///     Generates a new <see cref="EmbedBuilder"/> based on the values put in at <paramref name="generator"/>.
         /// </summary>
-        /// <param name="settings">The base settings for this embed.</param>
-        /// <returns></returns>
-        public static EmbedBuilder Generate(EmbedBuilderSettings settings)
+        /// <param name="generator">The base settings for this builder.</param>
+        /// <param name="action">An alternative action the builder should take. Executed after the action in <paramref name="generator"/>.</param>
+        /// <returns>The generated <see cref="EmbedBuilder"/>.</returns>
+        public static EmbedBuilder Generate(BuilderSettings<EmbedBuilder> generator, Action<EmbedBuilder>? action = null)
         {
             var eb = new EmbedBuilder();
+            generator.Action(eb);
 
-            if (settings.BaseAuthor is not null)
-                eb.WithAuthor(settings.BaseAuthor);
-            if (settings.BaseFooter is not null)
-                eb.WithFooter(settings.BaseFooter);
-            if (settings.BaseColor is not null)
-                eb.WithColor(settings.BaseColor.Value);
-
-            if (!string.IsNullOrEmpty(settings.BaseDescription))
-                eb.WithDescription(settings.BaseDescription);
+            if (action is not null)
+                action(eb);
 
             return eb;
         }
