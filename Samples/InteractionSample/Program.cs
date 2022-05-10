@@ -35,7 +35,7 @@ discordClient.Ready += async () =>
 
 discordClient.InteractionCreated += async (i) =>
 {
-    var ctx = Discord.Extensions.Interactions.InteractionContext.GenerateGeneric(i, discordClient);
+    var ctx = interaction.CreateGenericContext(discordClient);
 
     await interactionService.ExecuteCommandAsync(ctx, services);
 };
