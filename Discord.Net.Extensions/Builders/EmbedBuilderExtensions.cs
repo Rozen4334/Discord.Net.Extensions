@@ -1,5 +1,3 @@
-﻿using Discord;
-
-namespace Discord.Extensions.Builders
+﻿namespace Discord.Extensions.Builders
 {
 }

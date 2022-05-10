@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Discord.Extensions
+﻿namespace Discord.Extensions
 {
     /// <summary>
     ///     Represents a language in which codeblocks can be formatted.
