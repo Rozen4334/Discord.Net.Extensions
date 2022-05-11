@@ -16,6 +16,10 @@ Just like Discord.Net, Discord.Net.Extensions is available from the NuGet packag
 
 ![Go to the Manager](https://rozen.one/files/devenv_JcPwXUnJxP.png)
 
+### Installing from Rider:
+
+![Go to the Manager](https://i.ibb.co/djm4Yf5/Rider.png)
+
 ### Applying namespaces:
 
 The naming of this package follows that of Discord.Net:
