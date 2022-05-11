@@ -1,23 +1,69 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+
+MIT License
+
+Copyright (c) 2022 Armano den Boef and Discord.Net.Extensions contributors.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+*/
 
 using Discord.Extensions.Internal;
+using System.Text;
 
 namespace Discord.Extensions
 {
+    /// <summary>
+    ///     Represents a builder to build Discord messages with markdown with.
+    /// </summary>
     public class MessageBuilder
     {
         private readonly StringBuilder _builder;
 
         /// <summary>
-        ///     Creates a new instance of a messagebuilder.
+        ///     Creates a new instance of <see cref="MessageBuilder"/>.
         /// </summary>
         public MessageBuilder()
         {
-            _builder = new StringBuilder();
+            _builder = new();
+        }
+
+        /// <summary>
+        ///     Creates a new instance of <see cref="MessageBuilder"/> with a starting string appended.
+        /// </summary>
+        /// <param name="startingString">The string to start the builder with.</param>
+        public MessageBuilder(string startingString)
+        {
+            _builder = new(startingString);
+        }
+
+        /// <summary>
+        ///     Creates a new instance of <see cref="MessageBuilder"/> with a capacity and (optionally) max capacity defined.
+        /// </summary>
+        /// <param name="capacity">The init capacity of the underlying <see cref="StringBuilder"/>.</param>
+        /// <param name="maxCapacity">The maximum capacity of the underlying <see cref="StringBuilder"/>.</param>
+        public MessageBuilder(int capacity, int? maxCapacity = null)
+        {
+            if (maxCapacity is not null)
+                _builder = new(capacity, maxCapacity.Value);
+            else
+                _builder = new(capacity);
         }
 
         /// <summary>

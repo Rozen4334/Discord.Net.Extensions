@@ -31,7 +31,7 @@ namespace Discord.Extensions
     /// <summary>
     ///     Provides a number of extensions for formatting Discord text.
     /// </summary>
-    public static class DiscordFormatExtensions
+    public static class FormatExtensions
     {
         /// <summary>
         ///     Formats <paramref name="text"/> to bold markdown.
