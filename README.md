@@ -8,7 +8,7 @@ It attempts to make work for the developer easier, by introducing extensions tha
 ### Grabbing the package from NuGet:
 
 The Discord.Net.Extensions package is available on [Nuget](https://www.nuget.org/packages/Discord.Net.Extensions/) or through the package manager:
-- `PM> Install-Package Discord.Net.Extensions -Version 1.1.0`
+- `PM> Install-Package Discord.Net.Extensions -Version 1.2.0`
 
 ### Installing from Visual Studio:
 
