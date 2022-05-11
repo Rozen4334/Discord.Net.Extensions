@@ -26,7 +26,10 @@ SOFTWARE.
 
 namespace Discord.Extensions
 {
-    public struct HeaderFormat
+    /// <summary>
+    ///     Represents the format in which a markdown header should be presented.
+    /// </summary>
+    public readonly struct HeaderFormat
     {
         public string Format { get; }
 
@@ -61,9 +64,7 @@ namespace Discord.Extensions
         public static readonly HeaderFormat H6 = new("######");
 
         private HeaderFormat(string format)
-        {
-            Format = format;
-        }
+            => Format = format;
 
         /// <summary>
         ///     Formats this header into markdown, appending provided string.

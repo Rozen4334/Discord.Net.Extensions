@@ -24,7 +24,7 @@ SOFTWARE.
 
 */
 
-using Discord.Extensions.Utils;
+using Discord.Extensions.Internal;
 using Discord.Interactions;
 
 namespace Discord.Extensions.Interactions

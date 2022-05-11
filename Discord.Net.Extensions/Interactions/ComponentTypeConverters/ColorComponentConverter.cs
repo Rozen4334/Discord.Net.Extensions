@@ -34,6 +34,6 @@ namespace Discord.Extensions.Interactions
     public class ColorComponentConverter : ComponentTypeConverter<Color>
     {
         public override Task<TypeConverterResult> ReadAsync(IInteractionContext context, IComponentInteractionData option, IServiceProvider services)
-            => Task.FromResult(Utils.ConverterExtensions.ConvertColor(option.Value));
+            => Task.FromResult(Internal.ConverterExtensions.ConvertColor(option.Value));
     }
 }

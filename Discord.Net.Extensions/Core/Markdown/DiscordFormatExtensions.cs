@@ -24,6 +24,8 @@ SOFTWARE.
 
 */
 
+using Discord.Extensions.Internal;
+
 namespace Discord.Extensions
 {
     /// <summary>
@@ -157,6 +159,7 @@ namespace Discord.Extensions
         /// <returns>The same <paramref name="text"/> with a markdown embedded link at provided <paramref name="index"/>, ranging until provided <paramref name="count"/>.</returns>
         public static string ToHyperLink(this string text, string url, int index = 0, int? count = null)
         {
+            url.ThrowIfNullOrEmpty();
             var length = count ?? (text.Length - index);
 
             return text.Format($"[{text[index..(index + length)]}]({url})", index, length);
@@ -175,6 +178,7 @@ namespace Discord.Extensions
         /// <returns>The same <paramref name="text"/> with a markdown header at provided <paramref name="index"/>, ranging until provided <paramref name="count"/>.</returns>
         public static string ToHeader(this string text, HeaderFormat format, int index = 0, int? count = null)
         {
+            format.ThrowIfNullOrEmpty();
             var length = count ?? (text.Length - index);
 
             return text.Format($"\n{format.Format} {text[index..(index + length)]} \n", index, length);
@@ -193,6 +197,7 @@ namespace Discord.Extensions
 
         private static string Format(this string text, string format, int index, int length)
         {
+            text.ThrowIfNullOrEmpty();
             return text.Insert(index, format).Remove(index + format.Length, length);
         }
     }

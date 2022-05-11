@@ -40,7 +40,7 @@ namespace Discord.Extensions.Interactions
         {
             var @string = (string)option.Value;
 
-            return Task.FromResult(Utils.ConverterExtensions.ConvertColor(@string));
+            return Task.FromResult(Internal.ConverterExtensions.ConvertColor(@string));
         }
     }
 }

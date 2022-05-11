@@ -40,7 +40,7 @@ namespace Discord.Extensions.Interactions
         {
             string @string = (option.Value as string) ?? "";
 
-            return Task.FromResult(Utils.ConverterExtensions.ConvertEmote(@string));
+            return Task.FromResult(Internal.ConverterExtensions.ConvertEmote(@string));
         }
     }
 }

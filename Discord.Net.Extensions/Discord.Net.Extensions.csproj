@@ -30,4 +30,8 @@
     <PackageReference Include="Discord.Net.Interactions" Version="3.6.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Exceptions\" />
+  </ItemGroup>
+
 </Project>

@@ -24,16 +24,33 @@ SOFTWARE.
 
 */
 
-using Discord.Interactions;
+using System.Runtime.CompilerServices;
 
-namespace Discord.Extensions.Interactions
+namespace Discord.Extensions.Internal
 {
-    /// <summary>
-    ///     A <see cref="TypeReader{T}"/> to convert component wildcards into <see cref="IEmote"/>.
-    /// </summary>
-    public class EmoteTypeReader : TypeReader<IEmote>
+    internal static class NullableExtensions
     {
-        public override Task<TypeConverterResult> ReadAsync(IInteractionContext context, string option, IServiceProvider services)
-            => Task.FromResult(Internal.ConverterExtensions.ConvertEmote(option));
+        public static bool IsNullOrEmpty(this object? obj)
+        {
+            if (obj is null)
+                return true;
+
+            if (obj is string str)
+                return string.IsNullOrEmpty(str);
+
+            return false;
+        }
+
+        public static void ThrowIfNullOrEmpty(this object? obj, [CallerMemberName] string? paramName = null)
+        {
+            if (obj.IsNullOrEmpty())
+                throw new ArgumentException("Parameter is null or empty.", paramName);
+        }
+
+        public static void ThrowIfNull(this object? obj, [CallerMemberName] string? paramName = null)
+        {
+            if (obj is null)
+                throw new ArgumentNullException(paramName);
+        }
     }
 }

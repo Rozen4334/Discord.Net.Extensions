@@ -27,7 +27,7 @@ SOFTWARE.
 using System.Collections.Immutable;
 using System.Text.RegularExpressions;
 
-namespace Discord.Extensions.Utils
+namespace Discord.Extensions.Internal
 {
     internal static class LazyTimeSpanConverter
     {

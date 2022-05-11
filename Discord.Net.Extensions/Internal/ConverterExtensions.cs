@@ -27,7 +27,7 @@ SOFTWARE.
 using Discord.Interactions;
 using System.Globalization;
 
-namespace Discord.Extensions.Utils
+namespace Discord.Extensions.Internal
 {
     internal static class ConverterExtensions
     {

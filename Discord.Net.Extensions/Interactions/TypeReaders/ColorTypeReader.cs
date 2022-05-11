@@ -34,6 +34,6 @@ namespace Discord.Extensions.Interactions
     public class ColorTypeReader : TypeReader<Color>
     {
         public override Task<TypeConverterResult> ReadAsync(IInteractionContext context, string option, IServiceProvider services)
-            => Task.FromResult(Utils.ConverterExtensions.ConvertColor(option));
+            => Task.FromResult(Internal.ConverterExtensions.ConvertColor(option));
     }
 }
