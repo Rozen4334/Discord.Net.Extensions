@@ -50,17 +50,17 @@ namespace Discord.Extensions
             => Generate(_generator, key, action);
 
         /// <inheritdoc/>
-        public virtual EmbedBuilder GenerateGlobal(Action<EmbedBuilder>? action = null)
+        public virtual ComponentBuilder GenerateGlobal(Action<ComponentBuilder>? action = null)
         {
-            var eb = new EmbedBuilder();
+            var cb = new ComponentBuilder();
 
             if (_generator.GlobalAction is not null)
-                _generator.GlobalAction(eb);
+                _generator.GlobalAction(cb);
 
             if (action is not null)
-                action(eb);
+                action(cb);
 
-            return eb;
+            return cb;
         }
 
         /// <summary>

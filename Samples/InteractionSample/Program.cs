@@ -1,5 +1,6 @@
 ﻿using Discord;
 using Discord.Interactions;
+using Discord.Extensions.Interactions;
 using Discord.WebSocket;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -37,7 +38,7 @@ discordClient.Ready += async () =>
 
 discordClient.InteractionCreated += async (i) =>
 {
-    var ctx = interaction.CreateGenericContext(discordClient);
+    var ctx = i.CreateGenericContext(discordClient);
 
     await interactionService.ExecuteCommandAsync(ctx, services);
 };
