@@ -5,7 +5,16 @@ using FactoryExample;
 using Microsoft.Extensions.DependencyInjection;
 
 var factorySettings = new BuilderSettings<ExampleType, EmbedBuilder>()
-    .AddAction(ExampleType.Default, x => x.AddField("The default embed", "This is generated when generating an embed with 'ExampleType.Default' as key."));
+    .AddAction(ExampleType.Default, x =>
+    {
+        x.AddField("The default embed", "This is generated when generating an embed with 'ExampleType.Default' as key.");
+
+        var mb = new MessageBuilder();
+
+        mb.AddPlainText("This is a description").AddBoldText("With bold letters");
+
+        x.WithDescription(mb.Build());
+    });
 
 var discordSettings = new DiscordSocketConfig()
 {

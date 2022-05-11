@@ -36,6 +36,8 @@ namespace Discord.Extensions
     {
         private readonly StringBuilder _builder;
 
+        private bool _lineStart = false;
+
         /// <summary>
         ///     Creates a new instance of <see cref="MessageBuilder"/>.
         /// </summary>
@@ -74,14 +76,16 @@ namespace Discord.Extensions
         /// </remarks>
         /// <param name="text">The text to be present in the header.</param>
         /// <param name="format">The header format.</param>
+        /// <param name="skipLine">If the builder should skip a line when creating the next parameter.</param>
         /// <returns>The same instance with a header appended. This method will append a new line below the header.</returns>
-        public MessageBuilder AddHeader(string text, HeaderFormat format)
+        public MessageBuilder AddHeader(string text, HeaderFormat format, bool skipLine = true)
         {
             text.ThrowIfNullOrEmpty();
             format.ThrowIfNull();
-
+            if (skipLine)
+                _builder.AppendLine();
             _builder.AppendLine(text.ToHeader(format));
-            _builder.AppendLine();
+            _lineStart = true;
             return this;
         }
 
@@ -99,6 +103,19 @@ namespace Discord.Extensions
         }
 
         /// <summary>
+        ///     Adds bold text to the builder.
+        /// </summary>
+        /// <param name="builder">A builder for multiline text.</param>
+        /// <param name="inline">If the text should be appended in the same line or if it should append to a new line.</param>
+        /// <returns>The same instance with bold text appended.</returns>
+        public MessageBuilder AddBoldText(MultiLineBuilder builder, bool inline = true)
+        {
+            builder.ThrowIfNull();
+            var text = builder.Build();
+            return AddBoldText(text, inline);
+        }
+
+        /// <summary>
         ///     Adds italic text to the builder.
         /// </summary>
         /// <param name="text">The text to be present in the markdown.</param>
@@ -109,6 +126,19 @@ namespace Discord.Extensions
             text.ThrowIfNullOrEmpty();
             Format(text.ToItalic(), inline);
             return this;
+        }
+
+        /// <summary>
+        ///     Adds italic text to the builder.
+        /// </summary>
+        /// <param name="builder">A builder for multiline text.</param>
+        /// <param name="inline">If the text should be appended in the same line or if it should append to a new line.</param>
+        /// <returns>The same instance with italic text appended.</returns>
+        public MessageBuilder AddItalicText(MultiLineBuilder builder, bool inline = true)
+        {
+            builder.ThrowIfNull();
+            var text = builder.Build();
+            return AddItalicText(text, inline);
         }
 
         /// <summary>
@@ -125,6 +155,19 @@ namespace Discord.Extensions
         }
 
         /// <summary>
+        ///     Adds plain text to the builder.
+        /// </summary>
+        /// <param name="builder">A builder for multiline text.</param>
+        /// <param name="inline">If the text should be appended in the same line or if it should append to a new line.</param>
+        /// <returns>The same instance with plain text appended.</returns>
+        public MessageBuilder AddPlainText(MultiLineBuilder builder, bool inline = true)
+        {
+            builder.ThrowIfNull();
+            var text = builder.Build();
+            return AddPlainText(text, inline);
+        }
+
+        /// <summary>
         ///     Adds underlined text to the builder.
         /// </summary>
         /// <param name="text">The text to be present in the markdown.</param>
@@ -135,6 +178,19 @@ namespace Discord.Extensions
             text.ThrowIfNullOrEmpty();
             Format(text.ToUnderline(), inline);
             return this;
+        }
+
+        /// <summary>
+        ///     Adds underlined text to the builder.
+        /// </summary>
+        /// <param name="builder">A builder for multiline text.</param>
+        /// <param name="inline">If the text should be appended in the same line or if it should append to a new line.</param>
+        /// <returns>The same instance with underlined text appended.</returns>
+        public MessageBuilder AddUnderlinedText(MultiLineBuilder builder, bool inline = true)
+        {
+            builder.ThrowIfNull();
+            var text = builder.Build();
+            return AddUnderlinedText(text, inline);
         }
 
         /// <summary>
@@ -166,6 +222,19 @@ namespace Discord.Extensions
         }
 
         /// <summary>
+        ///     Adds strikethrough text to the builder.
+        /// </summary>
+        /// <param name="builder">A builder for multiline text.</param>
+        /// <param name="inline">If the text should be appended in the same line or if it should append to a new line.</param>
+        /// <returns>The same instance with striked through text appended.</returns>
+        public MessageBuilder AddStrikeThroughText(MultiLineBuilder builder, bool inline = true)
+        {
+            builder.ThrowIfNull();
+            var text = builder.Build();
+            return AddStrikeThroughText(text, inline);
+        }
+
+        /// <summary>
         ///     Adds a spoiler to the builder.
         /// </summary>
         /// <param name="text">The text to be present in the markdown.</param>
@@ -179,29 +248,74 @@ namespace Discord.Extensions
         }
 
         /// <summary>
+        ///     Adds a spoiler to the builder.
+        /// </summary>
+        /// <param name="builder">A builder for multiline text.</param>
+        /// <param name="inline">If the text should be appended in the same line or if it should append to a new line.</param>
+        /// <returns>The same instance with a spoiler appended.</returns>
+        public MessageBuilder AddSpoiler(MultiLineBuilder builder, bool inline = true)
+        {
+            builder.ThrowIfNull();
+            var text = builder.Build();
+            return AddSpoiler(text, inline);
+        }
+
+        /// <summary>
         ///     Adds a quote to the builder.
         /// </summary>
         /// <param name="text">The text to be present in the markdown.</param>
+        /// <param name="skipLine">If the builder should skip a line when creating the next parameter.</param>
         /// <returns>The same instance with a quote appended. This method will append a new line below the quote.</returns>
-        public MessageBuilder AddQuote(string text)
+        public MessageBuilder AddQuote(string text, bool skipLine = true)
         {
             text.ThrowIfNullOrEmpty();
+            if (skipLine)
+                _builder.AppendLine();
             _builder.AppendLine(text.ToQuote());
-            _builder.AppendLine();
+            _lineStart = true;
             return this;
+        }
+
+        /// <summary>
+        ///     Adds a quote to the builder.
+        /// </summary>
+        /// <param name="builder">A builder for multiline text.</param>
+        /// <param name="inline">If the text should be appended in the same line or if it should append to a new line.</param>
+        /// <returns>The same instance with a quote appended.</returns>
+        public MessageBuilder AddQuote(MultiLineBuilder builder, bool inline = true)
+        {
+            builder.ThrowIfNull();
+            var text = builder.Build();
+            return AddQuote(text, inline);
         }
 
         /// <summary>
         ///     Adds a block quote to the builder.
         /// </summary>
         /// <param name="text">The text to be present in the markdown.</param>
+        /// <param name="skipLine">If the builder should skip a line when creating the next parameter.</param>
         /// <returns>The same instance with a block quote appended. This method will append a new line below the quote.</returns>
-        public MessageBuilder AddBlockQuote(string text)
+        public MessageBuilder AddBlockQuote(string text, bool skipLine = true)
         {
             text.ThrowIfNullOrEmpty();
+            if (skipLine)
+                _builder.AppendLine();
             _builder.AppendLine(text.ToBlockQuote());
-            _builder.AppendLine();
+            _lineStart = true;
             return this;
+        }
+
+        /// <summary>
+        ///     Adds a block quote to the builder.
+        /// </summary>
+        /// <param name="builder">A builder for multiline text.</param>
+        /// <param name="skipLine">If the builder should skip a line when creating the next parameter.</param>
+        /// <returns>The same instance with a block quote appended. This method will append a new line below the quote.</returns>
+        public MessageBuilder AddBlockQuote(MultiLineBuilder builder, bool skipLine = true)
+        {
+            builder.ThrowIfNull();
+            var text = builder.Build();
+            return AddBlockQuote(text, skipLine);
         }
 
         /// <summary>
@@ -218,18 +332,48 @@ namespace Discord.Extensions
         }
 
         /// <summary>
+        ///     Adds code marked text to the builder.
+        /// </summary>
+        /// <param name="builder">A builder for multiline text.</param>
+        /// <param name="inline">If the text should be appended in the same line or if it should append to a new line.</param>
+        /// <returns>The same instance with code marked text appended.</returns>
+        public MessageBuilder AddCode(MultiLineBuilder builder, bool inline = true)
+        {
+            builder.ThrowIfNull();
+            var text = builder.Build();
+            return AddCode(text, inline);
+        }
+
+        /// <summary>
         ///     Adds a code block to the builder.
         /// </summary>
         /// <param name="text">The text to be present in the markdown.</param>
         /// <param name="lang">The language in which this code should be presented.</param>
+        /// <param name="skipLine">If the builder should skip a line when creating the next parameter.</param>
         /// <returns>The same instance with a code block appended. This method will append a new line below the block.</returns>
-        public MessageBuilder AddCodeBlock(string text, CodeLanguage? lang = null)
+        public MessageBuilder AddCodeBlock(string text, CodeLanguage? lang = null, bool skipLine = true)
         {
             text.ThrowIfNullOrEmpty();
             lang ??= CodeLanguage.None;
+            if (skipLine)
+                _builder.AppendLine();
             _builder.AppendLine(text.ToCodeBlock(lang));
-            _builder.AppendLine();
+            _lineStart = true;
             return this;
+        }
+
+        /// <summary>
+        ///     Adds a code block to the builder.
+        /// </summary>
+        /// <param name="builder">A builder for multiline text.</param>
+        /// <param name="lang">The language in which this code should be presented.</param>
+        /// <param name="skipLine">If the builder should skip a line when creating the next parameter.</param>
+        /// <returns>The same instance with a code block appended. This method will append a new line below the quote.</returns>
+        public MessageBuilder AddCodeBlock(MultiLineBuilder builder, CodeLanguage? lang = null, bool skipLine = true)
+        {
+            builder.ThrowIfNull();
+            var text = builder.Build();
+            return AddCodeBlock(text, lang, skipLine);
         }
 
         /// <summary>
@@ -277,12 +421,13 @@ namespace Discord.Extensions
         }
 
         /// <summary>
-        ///     Adds a line of whitespace to the builder.
+        ///     Starts the next query to the builder on a new line.
         /// </summary>
         /// <returns>The same instance with an empty line appended.</returns>
         public MessageBuilder AddNewline()
         {
             _builder.AppendLine();
+            _lineStart = true;
             return this;
         }
 
@@ -296,9 +441,32 @@ namespace Discord.Extensions
         private void Format(string text, bool inline)
         {
             if (inline)
-                _builder.Append(text);
+            {
+                if (!_lineStart)
+                    text = " " + text;
+
+                else
+                    _lineStart = false;
+
+                _builder.Append(text); // add a space to define 
+            }
             else
-                _builder.AppendLine(text);
+            {
+                if (_lineStart)
+                    _lineStart = false;
+                _builder.AppendLine();
+                _builder.Append(text);
+            }
         }
+
+        /// <summary>
+        ///     Builds the underlying <see cref="StringBuilder"/> to a string.
+        /// </summary>
+        /// <remarks>
+        ///     This method has the same functionality as <see cref="Build"/>.
+        /// </remarks>
+        /// <returns>The string to send to Discord.</returns>
+        public override string ToString()
+            => _builder.ToString();
     }
 }

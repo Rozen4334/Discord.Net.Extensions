@@ -100,9 +100,12 @@ namespace Discord.Extensions
         /// <returns>The same <paramref name="text"/> with quote formatting.</returns>
         public static string ToQuote(this string text, int index = 0, int? count = null) //=> $"> {text}";
         {
+            if (index is 0 && count is null)
+                text = text.Replace(Environment.NewLine, $"{Environment.NewLine}> ");
+
             var length = count ?? (text.Length - index);
 
-            return text.Format($"\n {text[index..(index + length)]}\n", index, length);
+            return text.Format($"{Environment.NewLine}> {text[index..(index + length)]}{Environment.NewLine}", index, length);
         }
 
         /// <summary>
@@ -114,7 +117,7 @@ namespace Discord.Extensions
         {
             var length = count ?? (text.Length - index);
 
-            return text.Format($"\n>>> {text[index..(index + length)]}\n", index, length);
+            return text.Format($"{Environment.NewLine}>>> {text[index..(index + length)]}{Environment.NewLine}", index, length);
         }
 
         /// <summary>
@@ -143,7 +146,7 @@ namespace Discord.Extensions
 
             var length = count ?? (text.Length - index);
 
-            return text.Format($"```{lang.Value}\n{text[index..(index + length)]}\n```", index, length);
+            return text.Format($"```{lang.Value}{Environment.NewLine}{text[index..(index + length)]}{Environment.NewLine}```", index, length);
         }
 
         /// <summary>
@@ -181,7 +184,7 @@ namespace Discord.Extensions
             format.ThrowIfNullOrEmpty();
             var length = count ?? (text.Length - index);
 
-            return text.Format($"\n{format.Format} {text[index..(index + length)]} \n", index, length);
+            return text.Format($"{Environment.NewLine}{format.Format} {text[index..(index + length)]} {Environment.NewLine}", index, length);
         }
 
         /// <summary>
