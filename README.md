@@ -41,9 +41,11 @@ Below a number of features is covered, including notices of logic, examples or e
 
 ## 🌐 Core
 
-### Formatting support
+### Message Formatting support
 
-Inside the `DiscordFormattingExtensions` class a large amount of formatting extensions exists, allowing developers to customize messages with ease.
+- `MessageBuilder` has been introduced to allow for large text message creation to look a lot cleaner & helps avoid a lot of markdown errors.
+
+> Alternatively, inside the `DiscordFormattingExtensions` class a large amount of formatting extensions exist, allowing developers to customize messages with ease.
 
 ### Builder Factories
 
