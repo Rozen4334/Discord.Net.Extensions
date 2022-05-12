@@ -33,6 +33,7 @@
 
   <ItemGroup>
     <PackageReference Include="Discord.Net.Interactions" Version="3.6.1" />
+    <PackageReference Include="Discord.Net.Webhook" Version="3.6.1" />
   </ItemGroup>
 
   <ItemGroup>
