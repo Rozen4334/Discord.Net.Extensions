@@ -115,3 +115,17 @@ supporting the use-case of `XInteractionContext<XInteraction>`.
 
 > \*\*\* The `UInt64` (ulong) converter is introduced because the `Int64` (number) 
 > parameter from discord does not support unsigned positive characters up to the height of Discord snowflake ID's.
+
+## ✨ Peculiarities of Discord
+
+1. You can use **any** emote in webhooks.
+Also you use emote only using it's id without the title.
+For an example, <:quinpat:923586781465706548>
+
+2. Every bot has nitro. You can use any emote from servers if your bot is there.
+
+3. There is no way to edit or delete an ephemeral message but this bot could...
+
+![Bot can everything](https://user-images.githubusercontent.com/64978711/168347881-cb5f9228-817e-418a-b085-4f2e8e92b71e.png)
+
+4. Bots can change their status and activity.
