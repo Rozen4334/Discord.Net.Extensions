@@ -17,8 +17,8 @@ If you want to contribute to Discord.Net.Extensions, it is suggested you read th
 
 ## 🚄 Contributing
 
-- Fork the repository
-- Create a new branch, preferably one that matches the feature/fix you're implementing
+- Fork the repository.
+- Create a new branch, preferably one that matches the feature/fix you're implementing.
 - Commit to the branch, adding or removing whichever is being added.
 - Open a PR to the master branch of this repo.
   - Await review, merge potential uproot commits.
