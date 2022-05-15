@@ -41,7 +41,7 @@ namespace FactoryExample
 
             eb.WithDescription("Test");
 
-            await _channel.SendMessageAsync(embed: eb.Build());
+            var msg = await _channel.SendMessageAsync(embed: eb.Build());
         }
     }
 }
