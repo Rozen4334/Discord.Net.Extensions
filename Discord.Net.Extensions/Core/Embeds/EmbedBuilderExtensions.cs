@@ -26,8 +26,10 @@ SOFTWARE.
 
 namespace Discord.Extensions
 {
-    internal static class EmbedBuilderExtensions
+    public static class EmbedBuilderExtensions
     {
-        // TODO
+        private static readonly Random random = new();
+
+        public static EmbedBuilder WithRandomColor(this EmbedBuilder builder) => builder.WithColor(new Color((uint)random.Next(0xFFFFFF)));
     }
 }
