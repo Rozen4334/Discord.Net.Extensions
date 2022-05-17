@@ -30,6 +30,6 @@ namespace Discord.Extensions
     {
         private static readonly Lazy<Random> _random = new(() => new());
 
-        public static EmbedBuilder WithRandomColor(this EmbedBuilder builder) => builder.WithColor(new Color((uint)random.Next(0xFFFFFF)));
+        public static EmbedBuilder WithRandomColor(this EmbedBuilder builder) => builder.WithColor(new Color((uint)_random.Value.Next(0xFFFFFF)));
     }
 }
